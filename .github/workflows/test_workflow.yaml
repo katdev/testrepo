@@ -1,0 +1,53 @@
+name: just a test workflow
+
+run-name: just a test workflow on branch ${{ github.ref_name }}
+
+on: 
+  workflow_dispatch:
+      inputs:
+          GREETING:
+            type: string
+            description: 'What to say when invoked'
+            default: 'hey there!'
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+
+jobs:
+  Say-Hello:
+  runs-on: ubuntu-latest
+  steps:
+    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    - run: echo ${{ github.event.inputs.GREETING }}
+
+
+
+# # Controls when the action will run. Invokes the workflow on push events but only for the main branch
+# on:
+
+
+# env:
+  
+#   AWS_REGION : <"us-east-1"> #Change to reflect your Region
+
+# # Permission can be added at job level or workflow level    
+# permissions:
+#       id-token: write   # This is required for requesting the JWT
+#       contents: read    # This is required for actions/checkout
+# jobs:
+#   AssumeRoleAndCallIdentity:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Git clone the repository
+#         uses: actions/checkout@v3
+#       - name: configure aws credentials
+#         uses: aws-actions/configure-aws-credentials@v1.7.0
+#         with:
+#           role-to-assume: <arn:aws:iam::111122223333:role/GitHubAction-AssumeRoleWithAction> #change to reflect your IAM role’s ARN
+#           role-session-name: GitHub_to_AWS_via_FederatedOIDC
+#           aws-region: ${{ env.AWS_REGION }}
+#       # Hello from AWS: WhoAmI
+#       - name: Sts GetCallerIdentity
+#         run: |
+#           aws sts get-caller-identity
