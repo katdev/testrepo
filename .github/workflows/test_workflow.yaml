@@ -44,7 +44,9 @@ jobs:
       - name: Show who we are
         run: |
           aws sts get-caller-identity
-
+      - name: Get buckets... if we can
+        run: |
+          aws s3 ls
 # # Controls when the action will run. Invokes the workflow on push events but only for the main branch
 # on:
 
