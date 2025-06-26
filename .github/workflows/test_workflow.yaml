@@ -16,10 +16,10 @@ on:
 
 jobs:
   Say-Hello:
-  runs-on: ubuntu-latest
-  steps:
-    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-    - run: echo ${{ github.event.inputs.GREETING }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo ${{ github.event.inputs.GREETING }}
 
 
 
